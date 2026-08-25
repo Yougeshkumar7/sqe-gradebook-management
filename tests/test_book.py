@@ -1,11 +1,10 @@
-
 from src.book import Book
 
 
 def test_book_creation():
     book = Book("Harry Potter", "J.K. Rowling")
 
-    assert book.title == "Harry Potter"
+    assert book.book_title == "Harry Potter"
     assert book.author == "J.K. Rowling"
 
 
