@@ -8,5 +8,5 @@ class Book:
         if not author.strip():
             raise ValueError("Book author cannot be empty")
 
-        self.book_title = title
+   self.id_number = title
         self.author = author
