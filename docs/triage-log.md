@@ -20,7 +20,7 @@
 4. Issue #11 — negative scores are accepted
    - Severity: Medium
    - Priority: P2
-   - Reason: Invalid grades can affect statistics, but the issue is less urgent than crashes and duplicate records.
+   - Reason: Invalid grades can affect statistics, but the issue is less urgent than the P1 defects.
 
 5. Issue #12 — average() gives incorrect rounding
    - Severity: Low
