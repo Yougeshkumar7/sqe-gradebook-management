@@ -22,3 +22,10 @@ def test_empty_author_raises_error():
         assert False
     except ValueError:
         assert True
+
+def test_whitespace_student_id_raises_error():
+    try:
+        Book("   ", "J.K. Rowling")
+        assert False
+    except ValueError:
+        assert True
