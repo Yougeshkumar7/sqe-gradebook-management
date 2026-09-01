@@ -1,27 +1,51 @@
-# SQE Library Management
+# SQE Gradebook Management
 
-## Project Description
+A Python-based Gradebook Management System developed as part of the Software Quality Engineering (SQE) course.
 
-SQE Library Management is a software project developed as part of the Software Quality Engineering lab. The project is focused on managing library books and members and providing a book search feature.
+## 📌 Project Description
 
-## Main Features
+SQE Gradebook Management is a small Python application designed to manage student records and calculate grade statistics.
 
-- Book Management
-- Member Management
-- Book Search
+The project is also used to practice Software Quality Engineering concepts such as:
 
-## Project Structure
+- Git and GitHub workflows
+- Feature branches
+- Atomic commits
+- Pull Requests
+- Code reviews
+- Issue tracking
+- Testing
+- Continuous Integration
 
-- `src/` - Application source code
-- `tests/` - Test cases and automated tests
-- `docs/` - Project documentation
-- `screenshots/` - Evidence of testing and project activities
-- `.github/workflows/` - GitHub Actions workflows
+## ✨ Features
 
-## Project Management
+- Add and manage student records
+- Store student roll numbers and names
+- Add student scores
+- Validate scores
+- Calculate average scores
+- Manage grade-related information
+- Test application functionality
 
-GitHub Issues and a GitHub Project board are used to organize and track the project tasks.
+## 🛠️ Technologies Used
 
-## Software Quality Engineering
+- Python 3.10+
+- Git
+- GitHub
+- VS Code
+- Pytest
 
-The project uses GitHub-based practices such as issues, labels, project management, version control, and continuous integration.
+## 📁 Project Structure
+
+```text
+sqe-gradebook-management/
+├── src/
+│   └── gradebook/
+│       ├── __init__.py
+│       └── gradebook.py
+├── tests/
+│   └── __init__.py
+├── docs/
+├── README.md
+├── requirements.txt
+└── .gitignore
