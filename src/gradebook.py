@@ -1,5 +1,8 @@
 class Student:
     def __init__(self, name, roll_number):
+        if not roll_number:
+            raise ValueError("Student ID cannot be empty")
+
         self.name = name
         self.roll_number = roll_number
         self.scores = []
