@@ -1,5 +1,5 @@
 import pytest
-from src.gradebook import validate_name
+from lab5.src.gradebook import validate_name
 
 
 def test_valid_name():

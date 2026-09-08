@@ -1,5 +1,5 @@
 import pytest
-from src.gradebook import Student, Roster
+from lab5.src.gradebook import Student, Roster
 
 
 def test_zero_scores_invalid():

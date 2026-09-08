@@ -1,5 +1,5 @@
 import pytest
-from src.gradebook import letter_grade
+from lab5.src.gradebook import letter_grade
 
 
 @pytest.mark.parametrize("score, expected", [
