@@ -40,7 +40,6 @@ def letter_grade(score):
     else:
         return "F"
 
-
 class Roster:
     def __init__(self):
         self.students = []
@@ -52,6 +51,7 @@ class Roster:
             raise ValueError("Student must have between 1 and 6 scores")
 
         self.students.append(student)
+
 
 
 def validate_name(name):
