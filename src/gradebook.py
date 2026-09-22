@@ -3,12 +3,20 @@ class Student:
         if not roll_number:
             raise ValueError("Student ID cannot be empty")
 
+        # Fix for Issue #19: validate student name
+        if not isinstance(name, str):
+            raise TypeError("Student name must be a string")
+
+        if not name.strip():
+            raise ValueError("Student name cannot be empty")
+
         self.name = name
         self.roll_number = roll_number
         self.scores = []
 
     def add_score(self, score):
-        if not isinstance(score, (int, float)):
+        # Fix for Issue #18: reject True and False as scores
+        if isinstance(score, bool) or not isinstance(score, (int, float)):
             raise TypeError("Score must be numeric")
 
         if score < 0:
@@ -26,7 +34,7 @@ class Student:
         return sum(self.scores) / len(self.scores)
 
     def grade_letter(self, score):
-        if not isinstance(score, (int, float)):
+        if isinstance(score, bool) or not isinstance(score, (int, float)):
             raise TypeError("Score must be numeric")
 
         if score < 0 or score > 100:
