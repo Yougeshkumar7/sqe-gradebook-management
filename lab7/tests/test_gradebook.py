@@ -49,3 +49,40 @@ def test_roster_add_student(roster, student):
     roster.add_student(student)
 
     assert student in roster.students
+
+
+    # Task 2 - class_average()
+
+
+def test_class_average_empty_roster():
+    roster = Roster()
+
+    assert roster.class_average() == 0.0
+
+
+def test_class_average_single_student():
+    roster = Roster()
+
+    student = Student("Sara", "002")
+    student.add_score(80)
+    student.add_score(90)
+
+    roster.add_student(student)
+
+    assert roster.class_average() == 85.0
+
+
+def test_class_average_multiple_students():
+    roster = Roster()
+
+    student1 = Student("Ali", "003")
+    student1.add_score(80)
+    student1.add_score(90)
+
+    student2 = Student("Sara", "004")
+    student2.add_score(70)
+
+    roster.add_student(student1)
+    roster.add_student(student2)
+
+    assert roster.class_average() == 77.5
