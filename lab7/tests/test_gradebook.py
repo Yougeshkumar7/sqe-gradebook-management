@@ -3,6 +3,10 @@ import pytest
 from gradebook import Student, Roster, GradeBookIOError
 
 
+
+# Fixtures
+
+
 # Function scope is useful when every test needs a fresh object.
 # A new Student is created for each test, so tests stay independent.
 @pytest.fixture
@@ -17,9 +21,8 @@ def roster():
     return Roster()
 
 
-# =========================
 # Task 1 - Fixtures
-# =========================
+
 
 def test_student_creation(student):
     assert student.name == "Ali"
@@ -29,14 +32,12 @@ def test_student_creation(student):
 
 def test_add_valid_score(student):
     student.add_score(85)
-
     assert student.scores == [85]
 
 
 def test_average(student):
     student.add_score(80)
     student.add_score(90)
-
     assert student.average() == 85.0
 
 
@@ -46,13 +47,11 @@ def test_grade_letter(student):
 
 def test_roster_add_student(roster, student):
     roster.add_student(student)
-
     assert student in roster.students
 
 
-# =========================
 # Task 2 - class_average()
-# =========================
+
 
 def test_class_average_empty_roster():
     roster = Roster()
@@ -88,9 +87,8 @@ def test_class_average_multiple_students():
     assert roster.class_average() == 77.5
 
 
-# =========================
 # Task 3 - Mocking File I/O
-# =========================
+
 
 def test_save_to_file(mocker):
     roster = Roster()
@@ -108,9 +106,13 @@ def test_save_to_file(mocker):
 
     roster.save_to_file("students.txt")
 
-    mock_open.assert_called_once_with("students.txt", "w")
+    mock_open.assert_called_once_with(
+        "students.txt",
+        "w"
+    )
 
     handle = mock_open()
+
     handle.write.assert_called_once_with(
         "Ali,005,80, 90\n"
     )
@@ -126,3 +128,42 @@ def test_save_to_file_os_error(mocker):
 
     with pytest.raises(GradeBookIOError):
         roster.save_to_file("students.txt")
+
+
+# Task 4 - Parametrized Edge Cases
+
+
+@pytest.mark.parametrize(
+    "score, expected_exception",
+    [
+        (-1, ValueError),
+        (0, None),
+        (1, None),
+        (100, None),
+        (101, ValueError),
+        ("85", TypeError),
+        (True, TypeError),
+    ],
+    ids=[
+        "negative-score",
+        "minimum-valid-score",
+        "just-above-minimum",
+        "maximum-valid-score",
+        "above-maximum",
+        "string-score",
+        "boolean-score",
+    ],
+)
+def test_add_score_edge_cases(
+    student,
+    score,
+    expected_exception
+):
+    if expected_exception is None:
+        student.add_score(score)
+
+        assert score in student.scores
+
+    else:
+        with pytest.raises(expected_exception):
+            student.add_score(score)
