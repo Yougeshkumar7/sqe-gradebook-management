@@ -23,6 +23,15 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
 
-      - name: Run tests
+      - name: Run main tests
         run: |
-          if [ -d tests ]; then python -m pytest -q; fi
+          python -m pytest -q tests
+
+      - name: Run Lab 5 tests
+        run: |
+          PYTHONPATH=. python -m pytest -q lab5/tests
+
+      - name: Run Lab 6 tests
+        working-directory: lab6
+        run: |
+          python -m pytest -q
