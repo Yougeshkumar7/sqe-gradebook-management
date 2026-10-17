@@ -13,3 +13,22 @@ def test_rank_students_returns_single_student():
     roster.add_student(student)
 
     assert rank_students(roster) == [student]
+
+
+    def test_rank_students_sorts_by_average_descending():
+    roster = Roster()
+
+    ali = Student("Ali", "S001")
+    ali.scores = [70, 80]       # Average: 75
+
+    sara = Student("Sara", "S002")
+    sara.scores = [90, 100]     # Average: 95
+
+    ahmed = Student("Ahmed", "S003")
+    ahmed.scores = [80, 90]     # Average: 85
+
+    roster.add_student(ali)
+    roster.add_student(sara)
+    roster.add_student(ahmed)
+
+    assert rank_students(roster) == [sara, ahmed, ali]
