@@ -21,4 +21,4 @@ class Roster:
 
 
 def rank_students(roster):
-    return []
+     return roster.students
