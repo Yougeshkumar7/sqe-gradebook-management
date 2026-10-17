@@ -4,6 +4,7 @@ from lab8.src.gradebook import Student, Roster, rank_students
 
 def test_rank_students_empty_roster_returns_empty_list():
     roster = Roster()
+
     assert rank_students(roster) == []
 
 
@@ -53,3 +54,22 @@ def test_rank_students_breaks_ties_alphabetically():
     roster.add_student(bilal)
 
     assert rank_students(roster) == [ali, bilal, zara]
+
+
+def test_rank_students_places_student_with_no_scores_last():
+    roster = Roster()
+
+    ali = Student("Ali", "S001")
+    ali.scores = [80, 90]
+
+    bilal = Student("Bilal", "S002")
+    bilal.scores = []
+
+    sara = Student("Sara", "S003")
+    sara.scores = [70, 80]
+
+    roster.add_student(bilal)
+    roster.add_student(sara)
+    roster.add_student(ali)
+
+    assert rank_students(roster) == [ali, sara, bilal]
