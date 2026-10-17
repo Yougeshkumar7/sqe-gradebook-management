@@ -9,9 +9,11 @@ def test_rank_students_empty_roster_returns_empty_list():
 
 def test_rank_students_returns_single_student():
     roster = Roster()
+
     student = Student("Ali", "S001")
     student.scores = [80, 90]
     roster.add_student(student)
+
     assert rank_students(roster) == [student]
 
 
@@ -32,3 +34,22 @@ def test_rank_students_sorts_by_average_descending():
     roster.add_student(ahmed)
 
     assert rank_students(roster) == [sara, ahmed, ali]
+
+
+def test_rank_students_breaks_ties_alphabetically():
+    roster = Roster()
+
+    zara = Student("Zara", "S004")
+    zara.scores = [80, 90]
+
+    ali = Student("Ali", "S005")
+    ali.scores = [85, 85]
+
+    bilal = Student("Bilal", "S006")
+    bilal.scores = [90, 80]
+
+    roster.add_student(zara)
+    roster.add_student(ali)
+    roster.add_student(bilal)
+
+    assert rank_students(roster) == [ali, bilal, zara]
