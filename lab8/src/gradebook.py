@@ -21,4 +21,8 @@ class Roster:
 
 
 def rank_students(roster):
-     return roster.students
+    return sorted(
+        roster.students,
+        key=lambda student: student.average(),
+        reverse=True
+    )
