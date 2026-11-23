@@ -76,3 +76,9 @@ class GradeBook:
                 return student
 
         return None
+
+def percentile(student, roster):
+    n = len(roster.students)
+    score = student.average()
+    rank = sum(other.average() < score for other in roster.students)
+    return rank / n * 100.0
