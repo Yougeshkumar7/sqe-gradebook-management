@@ -76,3 +76,30 @@ class GradeBook:
                 return student
 
         return None
+
+
+def percentile(student, roster):
+    """Return the percentage of peers with a strictly lower average.
+
+    Use the roster entry matching student.roll_number. Tied averages receive
+    the same percentile, and a singleton receives 100.0. Raise ValueError
+    when the roster is empty or the student is absent.
+    """
+    total_students = len(roster.students)
+    if total_students == 0:
+        raise ValueError("Cannot rank an empty roster")
+
+    roster_student = roster.find_student_by_roll_number(student.roll_number)
+    if roster_student is None:
+        raise ValueError("Student is not in the roster")
+
+    if total_students == 1:
+        return 100.0
+
+    target_average = roster_student.average()
+    rank = sum(
+        peer.average() < target_average
+        for peer in roster.students
+        if peer is not roster_student
+    )
+    return rank / (total_students - 1) * 100.0
